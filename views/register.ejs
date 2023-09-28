@@ -1,0 +1,29 @@
+<section>
+    <div class="container">
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6 main">
+                <form action="/register" method="POST">
+                    <h2>Registrar Paciente</h2>
+                    <input type="text" class="box" id="name" name="name" placeholder="Name" required />
+                    <br>
+                    <input type="email" class="box" id="email" name="email" placeholder="Email" required />
+                    <br>
+                    <input type="password" class="box" id="password" name="password" placeholder="Password" required />
+                    <br>
+                    <input type="submit" value="Enviar" id="submit" />
+                    
+                    <div class="alert alert-danger text-center" role="alert" style="display:none;">
+                        <% if (erro) { %>
+                            <p><%= erro %></p>
+                        <% } %>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+</section>
