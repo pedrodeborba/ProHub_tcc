@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.patient{
+    width: 80%;
+    margin: 5vh 5vw 5vh 5vw;
+    border: 7px solid #6F7BF7;
+    border-radius: 10px;
+}
+
+.patients{
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+#password{
+    white-space: nowrap;
+    overflow-x: scroll;
+    text-overflow: ellipsis;
+}
+
+.icons{
+    padding: 0 10px;
+}
+
+div h2{
+    font-size: 1.2rem;
+}

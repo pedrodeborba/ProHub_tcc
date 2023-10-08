@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 require('../models/Patient');
 const Patient = mongoose.model('Patient');
 
@@ -7,20 +8,32 @@ function getRegister (req, res, app) {
     res.render("layouts/registerPatient", {erro: null});
 }
 
-function postRegister (req,res){
+async function postRegister (req,res){
+    const email = await Patient.findOne({ email: req.body.email });
+    if (email) {
+        return res.render("layouts/registerPatient", { erro: "Email já cadastrado." });
+    }
+
+    const password = req.body.password;
+    if(password.length < 8) {
+        return res.render("layouts/registerPatient", { erro: "A senha deve ter no mínimo 8 caracteres" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newPatient = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: hashedPassword
     };
 
     new Patient(newPatient).save().then(() => {
         console.log("Paciente salvo com sucesso!");
-        res.redirect('/home');
+        res.redirect('/');
     }).catch((err) => {
         console.log("Erro ao salvar paciente: " + err);
         res.render("layouts/registerPatient", {erro: err});
-    });
+    });   
 }
 
 module.exports = { getRegister, postRegister};

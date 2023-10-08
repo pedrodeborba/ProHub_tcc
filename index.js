@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 //controllers
 const homeController = require ('./controllers/Home');
 const registerController = require('./controllers/RegisterPatient');
+const patientController = require('./controllers/Patient');
 
 const app = express();
 const port = process.env.PORT;
@@ -44,6 +45,10 @@ app.get("/register/patient", (req, res) => {
 
 app.post("/register/patient", (req, res) => {
     registerController.postRegister(req,res);
+});
+
+app.get("/list/patients", (req, res) => {
+    patientController.listPatients(req,res,app);
 });
 
 app.listen(port, () => {
