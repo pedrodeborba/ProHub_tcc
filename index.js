@@ -39,11 +39,11 @@ app.get("/home", (req,res) => {
     homeController.getHome(req,res,app);
 });
 
-app.get("/register/patient", (req, res) => {
+app.get("/register/patients", (req, res) => {
     registerController.getRegister(req,res,app);
 });
 
-app.post("/register/patient", (req, res) => {
+app.post("/register/patients", (req, res) => {
     registerController.postRegister(req,res);
 });
 
@@ -53,6 +53,14 @@ app.get("/list/patients", (req, res) => {
 
 app.get("/list/patients/delete/:id", (req, res) => {
     patientController.deletePatient(req,res,app);
+});
+
+app.get("/list/patients/edit/:id", (req, res) => {
+    patientController.editPatient(req,res,app);
+});
+
+app.post("/list/patients/edit/send", (req, res) => {
+    patientController.editPatientSend(req,res,app);
 });
 
 app.listen(port, () => {
