@@ -1,0 +1,29 @@
+<section>
+    <div class="box">
+        <% schedules.forEach(schedule=> { %>
+            <div class="post">
+                <div class="posts">
+                    Data: <%= schedule.dateString %>
+                </div>
+                <div class="posts">
+                    Dia: <%= schedule.day %>
+                </div>
+                <div class="posts">
+                    Mês: <%= schedule.month %>
+                </div>
+                <div class="posts">
+                    Ano: <%= schedule.year %>
+                </div>
+                <div class="posts">
+                    Horário: <%= schedule.time %>
+                </div>
+                <div class="posts">
+                    Timestamp: <%= schedule.timestamp %>
+                </div>
+                <div class="posts">
+                    Paciente(id): <%= schedule.patientId %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</section>

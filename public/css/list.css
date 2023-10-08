@@ -12,14 +12,14 @@
     justify-content: center;
 }
 
-.patient{
+.post{
     width: 80%;
     margin: 5vh 5vw 5vh 5vw;
     border: 7px solid #6F7BF7;
     border-radius: 10px;
 }
 
-.patients{
+.posts{
     background-color: #fff;
     width: 100%;
     padding: 10px;

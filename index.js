@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const homeController = require ('./controllers/Home');
 const registerController = require('./controllers/RegisterPatient');
 const patientController = require('./controllers/Patient');
+const scheduleController = require('./controllers/Schedule');
 
 const app = express();
 const port = process.env.PORT;
@@ -39,6 +40,8 @@ app.get("/home", (req,res) => {
     homeController.getHome(req,res,app);
 });
 
+//------------------Patient------------------
+
 app.get("/register/patients", (req, res) => {
     registerController.getRegister(req,res,app);
 });
@@ -62,6 +65,24 @@ app.get("/list/patients/edit/:id", (req, res) => {
 app.post("/list/patients/edit/send", (req, res) => {
     patientController.editPatientSend(req,res,app);
 });
+
+//------------------Schedule------------------
+
+app.get("/list/schedules", (req, res) => {
+    scheduleController.listSchedules(req,res,app);
+});
+
+// app.get("/list/schedules/delete/:id", (req, res) => {
+//     scheduleController.deleteSchedule(req,res,app);
+// });
+
+// app.get("/list/schedules/edit/:id", (req, res) => {
+//     scheduleController.editSchedule(req,res,app);
+// });
+
+// app.post("/list/schedules/edit/send", (req, res) => {
+//     scheduleController.editScheduleSend(req,res,app);
+// });
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
