@@ -12,4 +12,14 @@ function listPatients (req, res, app) {
     });
 }
 
-module.exports = { listPatients }
+function deletePatient (req, res, app) {
+    Patient.deleteOne({_id: req.params.id}).then(() => {
+        app.set("layout", "./layouts/listPatients");
+        res.redirect('/list/patients');
+    }).catch((err) => {
+        console.log("Erro ao deletar paciente: " + err);
+        res.redirect('/');
+    });
+}
+
+module.exports = { listPatients, deletePatient }

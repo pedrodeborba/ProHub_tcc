@@ -51,6 +51,10 @@ app.get("/list/patients", (req, res) => {
     patientController.listPatients(req,res,app);
 });
 
+app.get("/list/patients/delete/:id", (req, res) => {
+    patientController.deletePatient(req,res,app);
+});
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
