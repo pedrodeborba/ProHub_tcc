@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ScheduleSchema = new Schema({
+    patientName : {
+        type: String,
+        required: true,
+        ref: 'Patient'
+    },
     dateString: {
         type: String,
         required: true
@@ -11,10 +16,6 @@ const ScheduleSchema = new Schema({
         required: true
     },
     month: {
-        type: Number,
-        required: true
-    },
-    timestamp: {
         type: Number,
         required: true
     },

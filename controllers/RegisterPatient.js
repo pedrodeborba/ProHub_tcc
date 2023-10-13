@@ -29,7 +29,7 @@ async function postRegister (req,res){
 
     new Patient(newPatient).save().then(() => {
         console.log("Paciente salvo com sucesso!");
-        res.redirect('/');
+        res.redirect('/list/patients');
     }).catch((err) => {
         console.log("Erro ao salvar paciente: " + err);
         res.render("layouts/registerPatients", {erro: err});
