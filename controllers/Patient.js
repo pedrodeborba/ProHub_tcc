@@ -23,17 +23,17 @@ function deletePatient (req, res, app) {
     });
 }
 
-function editPatient (req, res, app) {
-    Patient.findOne({_id: req.params.id}).then((patient) => {
+function editPatient(req, res, app) {
+    Patient.findOne({ _id: req.params.id }).then((patient) => {
         app.set('layout', './layouts/editPatients');
-        res.render("layouts/editPatients", {patient: patient, error: null});
+        res.render("layouts/editPatients", { patient: patient, error: null });
     }).catch((err) => {
         console.log("Erro ao listar paciente: " + err);
         res.redirect('/');
     });
 }
 
-function editPatientSend (req, res) {
+function editPatientSend(req, res) {
     const patId = req.body.id;
 
     Patient.findOne({ _id: patId }).then((pat) => {
@@ -42,7 +42,12 @@ function editPatientSend (req, res) {
         } else {
             pat.name = req.body.name;
             pat.email = req.body.email;
-            pat.password = bcrypt.hashSync(req.body.password, 10);
+
+            if (req.body.password) {
+                if (req.body.password.length >= 8) {
+                    pat.password = bcrypt.hashSync(req.body.password, 10);
+                }
+            }
 
             pat.save().then(() => {
                 res.redirect('/list/patients');
@@ -56,5 +61,6 @@ function editPatientSend (req, res) {
         res.send('Erro ao buscar paciente: ' + err);
     });
 }
+
 
 module.exports = { listPatients, deletePatient, editPatient, editPatientSend }

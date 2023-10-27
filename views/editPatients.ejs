@@ -27,7 +27,31 @@
                         Editar
                     </button>
                 </div>
+
+                <div id="error-message" class="text-danger" style="padding-top: 10px; display:none;"></div>
+
             </form>
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const passwordInput = form.querySelector('input[name="password"]');
+        const errorMessage = document.getElementById("error-message");
+
+        form.addEventListener("submit", function (event) {
+            if (passwordInput.value.trim() !== "" && passwordInput.value.length < 8) {
+                event.preventDefault(); 
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "A senha deve ter pelo menos 8 caracteres. Se o campo estiver vazio, a senha não será alterada";
+
+                setTimeout(function () {
+                    errorMessage.style.display = "none";
+                }, 5000);
+            }
+        });
+    });
+</script>
+
+
