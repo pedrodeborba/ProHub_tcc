@@ -33,7 +33,12 @@ mongoose.connect(process.env.DB_URI).then(() => {
 });
 
 app.get("/", (req, res) =>{
-    res.redirect('/home');
+    res.redirect('/usuario/login');
+});
+
+app.get("/usuario/login", (req, res) => {
+    app.set('layout', './layouts/login');
+    res.render("layouts/login", {error: null});
 });
 
 app.get("/home", (req,res) => {

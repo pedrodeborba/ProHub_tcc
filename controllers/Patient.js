@@ -25,8 +25,8 @@ function deletePatient (req, res, app) {
 
 function editPatient(req, res, app) {
     Patient.findOne({ _id: req.params.id }).then((patient) => {
-        app.set('layout', './layouts/editPatients');
-        res.render("layouts/editPatients", { patient: patient, error: null });
+        app.set('layout', './layouts/edit');
+        res.render("layouts/edit", { patient: patient, error: null });
     }).catch((err) => {
         console.log("Erro ao listar paciente: " + err);
         res.redirect('/');

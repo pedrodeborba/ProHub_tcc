@@ -1,0 +1,17 @@
+<div class="container">
+        <div>
+            <img src="/img/DocSys.png" id="logo">
+        </div>
+
+        <div>
+            <input id="inputPassword" type="text" placeholder="Insira a senha">
+        </div>
+</div>
+<script>
+    const password = document.querySelector('#inputPassword');
+    password.addEventListener('keyup', function(e){
+        if(password.value == "admin"){
+            window.location.href = '/home';
+        }
+    });
+</script>

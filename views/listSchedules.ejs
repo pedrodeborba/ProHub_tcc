@@ -16,7 +16,7 @@
                     <% schedules.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)).forEach(schedule=> { %>
                         <div class="post">
                             <div class="posts">
-                                Paciente: <%= schedule.scheduleName %>
+                                Paciente: <%= schedule.patientName %>
                             </div>
                             <div class="posts">
                                 Data: <%= schedule.dateString %>

@@ -43,3 +43,13 @@ div input{
     border: none;
     color: #fff;
 }
+
+#error-message{
+    display: none;
+    color: #6F7BF7 !important;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}

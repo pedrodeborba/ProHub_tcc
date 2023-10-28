@@ -6,6 +6,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    background-color: rgba(111, 123, 247, 0.8);
+}
+
 .navbar{
     background-color: #6F7BF7;
 }

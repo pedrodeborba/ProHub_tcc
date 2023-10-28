@@ -32,7 +32,7 @@ img{
 .post{
     width: 80%;
     margin: 5vh 5vw 5vh 5vw;
-    border: 7px solid #6F7BF7;
+    border: 7px solid rgba(111, 123, 247, 0.5);
     border-radius: 10px;
 }
 
