@@ -4,14 +4,20 @@
         </div>
 
         <div>
-            <input id="inputPassword" type="text" placeholder="Insira a senha">
+            <form method="post" action="/usuario/login" class="login-form">
+                <label>Login</label>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email..." required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Senha..." required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="login" class="login-button">Entrar</button>
+                </div>
+                <% if (error) { %>
+                    <p class="erro-mensagem"><%= error %></p>
+                <% } %>
+            </form>
         </div>
 </div>
-<script>
-    const password = document.querySelector('#inputPassword');
-    password.addEventListener('keyup', function(e){
-        if(password.value == "admin"){
-            window.location.href = '/home';
-        }
-    });
-</script>

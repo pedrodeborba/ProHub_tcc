@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 //controllers
 const homeController = require ('./controllers/Home');
+const authController = require ('./controllers/Auth')
 const registerController = require('./controllers/RegisterPatient');
 const patientController = require('./controllers/Patient');
 const scheduleController = require('./controllers/Schedule');
@@ -37,9 +38,12 @@ app.get("/", (req, res) =>{
 });
 
 app.get("/usuario/login", (req, res) => {
-    app.set('layout', './layouts/login');
-    res.render("layouts/login", {error: null});
+    authController.getAuth(req,res,app)
 });
+
+app.post("/usuario/login", (req, res) => {
+    authController.Authentication(req,res)
+})
 
 app.get("/home", (req,res) => {
     homeController.getHome(req,res,app);
