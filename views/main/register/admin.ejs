@@ -5,8 +5,8 @@
 
             </div>
             <div class="col-md-6 main text-center">
-                <form action="/register/patients" method="POST">
-                    <h2 style="color: #fff;">REGISTAR PACIENTES</h2>
+                <form action="/register/admin" method="POST">
+                    <h2 style="color: #fff;">REGISTRAR PROFISSIONAIS</h2>
                     <input type="text" class="box" id="name" name="name" placeholder="Name" required />
                     <br>
                     <input type="email" class="box" id="email" name="email" placeholder="Email" required />
@@ -36,7 +36,7 @@
   
       setTimeout(function () {
         erroElement.style.display = "none";
-      }, 3000); // 3000 milissegundos = 3 segundos
+      }, 3000);
     }
   
     const erro = "<%= erro %>";

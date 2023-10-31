@@ -1,6 +1,6 @@
 function getHome(req,res,app){
-    app.set('layout', './layouts/home');
-    res.render("layouts/home", {error: null});
+    app.set('layout', './layouts/start/home');
+    res.render("layouts/start/home", {error: null});
 }
 
-module.exports = {getHome}
+module.exports = { getHome };

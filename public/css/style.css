@@ -21,6 +21,11 @@ body{
     margin: 10px;
 }
 
+.btn:hover{
+    background-color: rgba(111, 123, 247, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .main {
     padding: 20px;
     box-shadow: 4px 5px 15px 0px rgba(111, 123, 247, 0.23), 15px 22px 26px 0px rgba(111, 123, 247, 0.20), 34px 49px 36px 0px rgba(111, 123, 247, 0.12), 61px 86px 42px 0px rgba(111, 123, 247, 0.03), 96px 135px 46px 0px rgba(111, 123, 247, 0.00);

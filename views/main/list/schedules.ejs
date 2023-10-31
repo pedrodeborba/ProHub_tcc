@@ -4,19 +4,19 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="search" placeholder="Procurar paciente pelo nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" id="search" placeholder="Pesquisar pelo nome do paciente"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
                 </div>
             </div>
             <div class="col-lg-4"></div>
         </div>
         <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8" id="schedule-container">
-                <div class="box">
-                    <% schedules.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)).forEach(schedule=> { %>
+            <% schedules.sort((a, b)=> new Date(a.timestamp) - new Date(b.timestamp)).forEach(schedule=> { %>
+                <div class="col-lg-6" id="schedule-container">
+                    <div class="box">
                         <div class="post">
                             <div class="posts">
-                                Paciente: <%= schedule.patientName %>
+                                <div id="name">Paciente: <%= schedule.patientName %></div>
                             </div>
                             <div class="posts">
                                 Data: <%= schedule.dateString %>
@@ -34,10 +34,9 @@
                                 Horário: <%= schedule.time %>
                             </div>
                         </div>
-                    <% }) %>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-2"></div>
+            <% }) %>
         </div>
     </div>
 </section>
@@ -51,7 +50,7 @@
             const searchText = searchInput.value.toLowerCase();
 
             schedule.forEach(function (schedule) {
-                const name = schedule.querySelector("h2");
+                const name = schedule.querySelector("#name");
                 const nameText = name.textContent.toLowerCase();
                 if (nameText.includes(searchText)) {
                     schedule.style.display = "block";
@@ -63,5 +62,5 @@
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>

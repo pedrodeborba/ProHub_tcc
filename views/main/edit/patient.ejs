@@ -1,0 +1,57 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-lg-6" >
+            <img src="/img/edit-patients.png" style="border-radius: 30px;">
+        </div>
+        <div class="col-lg-6">
+            <form action="/list/patients/edit/send" method="POST">
+                    <input type="hidden" name="id" value="<%= patient.id %>">
+                <div>
+                    <input type="text" name="name" placeholder="Nome" value="<%= patient.name %>">
+                </div>
+
+                <div>
+                    <input type="text" name="email" placeholder="Email" value="<%= patient.email %>">
+                </div>
+            
+                <div>
+                    <input type="password" name="password" placeholder="Nova senha">
+                </div>
+            
+                <div>
+                    <button type="submit" id="edit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        Editar
+                    </button>
+                </div>
+
+                <div id="error-message" class="text-danger"></div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const passwordInput = form.querySelector('input[name="password"]');
+        const errorMessage = document.getElementById("error-message");
+
+        form.addEventListener("submit", function (event) {
+            if (passwordInput.value.trim() !== "" && passwordInput.value.length < 8) {
+                event.preventDefault(); 
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "A senha deve ter pelo menos 8 caracteres. Se o campo estiver vazio, a senha não será alterada";
+
+                setTimeout(function () {
+                    errorMessage.style.display = "none";
+                }, 5000);
+            }
+        });
+    });
+</script>
+
+

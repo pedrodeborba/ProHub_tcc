@@ -3,8 +3,8 @@ require('../models/Admin');
 const Admin = mongoose.model('Admin');
 
 function getAuth(req, res, app) {
-    app.set('layout', './layouts/login');
-    res.render("layouts/login", { error: null });
+    app.set('layout', './layouts/auth/login');
+    res.render("layouts/auth/login", { error: null });
 }
 
 async function Authentication(req, res) {
@@ -12,7 +12,7 @@ async function Authentication(req, res) {
     const password = req.body.password;
 
     if (!email || !password) {
-        res.render("layouts/login", { error: "Preencha todos os campos" });
+        res.render("layouts/auth/login", { error: "Preencha todos os campos" });
         return;
     }
 
@@ -21,18 +21,18 @@ async function Authentication(req, res) {
 
         if (!admin) {
             console.log(email, password)
-            res.render("layouts/login", { error: "Credenciais inválidas" });
+            res.render("layouts/auth/login", { error: "Credenciais inválidas" });
             return;
         }
 
         if (admin.password === password ) {
             res.redirect("/home");
         } else {
-            res.render("layouts/login", { error: "Credenciais inválidas" });
+            res.render("layouts/auth/login", { error: "Credenciais inválidas" });
         }
     } catch (error) {
         console.error(error);
-        res.render("layouts/login", { error: "Erro ao autenticar" });
+        res.render("layouts/auth/login", { error: "Erro ao autenticar" });
     }
 }
 
