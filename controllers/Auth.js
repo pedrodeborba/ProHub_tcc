@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('../models/Admin');
 const Admin = mongoose.model('Admin');
+const bcrypt = require('bcrypt');
 
 function getAuth(req, res, app) {
     app.set('layout', './layouts/auth/login');
@@ -20,12 +21,17 @@ async function Authentication(req, res) {
         const admin = await Admin.findOne({ email });
 
         if (!admin) {
-            console.log(email, password)
             res.render("layouts/auth/login", { error: "Credenciais inválidas" });
             return;
         }
 
-        if (admin.password === password ) {
+        const hash = await bcrypt.compare(password, admin.password);
+
+        if (hash) {
+            req.session.user = {
+                id: admin.id,
+                email: admin.email,
+            };
             res.redirect("/home");
         } else {
             res.render("layouts/auth/login", { error: "Credenciais inválidas" });
@@ -36,4 +42,9 @@ async function Authentication(req, res) {
     }
 }
 
-module.exports = { getAuth, Authentication };
+function logout(req, res) {
+    delete req.session.user;
+    res.redirect("/user/login");
+}
+
+module.exports = { getAuth, Authentication, logout };

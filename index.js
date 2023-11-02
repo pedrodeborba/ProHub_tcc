@@ -3,9 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const expressLayouts = require('express-ejs-layouts');
+const session = require('express-session');
 const mongoose = require('mongoose');
 
-//controllers
+// ====================================Middleware=============================================================
+const middleware = require ('./middlewares/middlewares');
+
+// ====================================Controllers=============================================================
+
 const homeController = require ('./controllers/Home');
 const authController = require ('./controllers/Auth')
 const adminController = require('./controllers/Admin');
@@ -19,10 +24,14 @@ app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', './layouts/source/main');
-app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({
-    extended: true
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(session({ 
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 
 mongoose.Promise = global.Promise;
@@ -33,25 +42,25 @@ mongoose.connect(process.env.DB_URI).then(() => {
     process.exit();
 });
 
-//------------------Source------------------
+//==================================================Source==================================================
 
-app.get("/", (req, res) =>{
-    res.redirect('/usuario/login');
+app.get("/", middleware.verifySpecialRoutes, (req, res) =>{
+    res.redirect('/user/login');
 });
 
-app.get("/usuario/login", (req, res) => {
+app.get("/user/login", middleware.verifySpecialRoutes, (req, res) => {
     authController.getAuth(req,res,app)
 });
 
-app.post("/usuario/login", (req, res) => {
+app.post("/user/login", (req, res) => {
     authController.Authentication(req,res)
 })
 
-app.get("/home", (req,res) => {
+app.get("/home", middleware.verifyAuth, (req,res) => {
     homeController.getHome(req,res,app);
 });
 
-//------------------Admin------------------
+//==================================================Admin==================================================
 
 app.get("/register/admin", (req, res) => {
     adminController.getRegisterAdmin(req,res,app);
@@ -77,7 +86,7 @@ app.post("/list/admins/edit/send", (req, res) => {
     adminController.editAdminSend(req,res,app);
 });
 
-//------------------Patient------------------
+//==================================================Patient==================================================
 
 app.get("/register/patient", (req, res) => {
     patientController.getRegisterPatient(req,res,app);
@@ -103,13 +112,17 @@ app.post("/list/patients/edit/send", (req, res) => {
     patientController.editPatientSend(req,res,app);
 });
 
-//------------------Schedule------------------
+//==================================================Schedule==================================================
 
 app.get("/list/schedules", (req, res) => {
     scheduleController.listSchedules(req,res,app);
 });
 
-//------------------Server------------------
+//==================================================Logout==================================================
+
+app.get('/logout', middleware.verifyAuth, authController.logout);
+
+//==================================================Server==================================================
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
