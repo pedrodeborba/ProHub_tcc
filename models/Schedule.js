@@ -4,12 +4,7 @@ const Schema = mongoose.Schema;
 const ScheduleSchema = new Schema({
     patientName : {
         type: String,
-        required: true,
         ref: 'Patient'
-    },
-    dateString: {
-        type: String,
-        required: true
     },
     day: {
         type: Number,
@@ -32,6 +27,6 @@ const ScheduleSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'
     }
-}, { timestamps: true });
+});
 
 mongoose.model('Schedule', ScheduleSchema);

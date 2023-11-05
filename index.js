@@ -118,6 +118,18 @@ app.get("/list/schedules", (req, res) => {
     scheduleController.listSchedules(req,res,app);
 });
 
+app.get("/list/schedules/completed/:id", (req, res) => {
+    scheduleController.completedSchedule(req,res,app);
+});
+
+app.get("/list/schedules/edit/:id", (req, res) => {
+    scheduleController.editSchedule(req,res,app);
+});
+
+app.post("/list/schedules/edit/send", (req, res) => {
+    scheduleController.editScheduleSend(req,res,app);
+});
+
 //==================================================Logout==================================================
 
 app.get('/logout', middleware.verifyAuth, authController.logout);
