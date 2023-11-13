@@ -20,13 +20,15 @@ section{
     background-color: rgba(111, 123, 247, 0.8);
 }
 
+
+
 input{
     width: 300px;
     height: 50px;
     border-radius: 10px;
     border: 2px solid #6F7BF7;
     color: #fff !important;
-    background-color: rgba(111, 123, 247, 0.5);
+    background-color: rgb(255, 255, 255, 0.1);
     padding: 10px;
 }
 
@@ -41,14 +43,14 @@ input::placeholder {
 .login-button{
     width: 100px;
     height: 50px;
-    background-color: #6F7BF7;
+    background-color: rgb(255, 255, 255, 0.1);
     color: #fff;
     border-radius: 10px;
     border: none;
 }
 
 .login-button:hover{
-    background-color: rgba(111, 123, 247, 0.5);
+    background-color: rgba(111, 123, 247, 1) !important;
 }
 
 #logo{
@@ -59,3 +61,7 @@ input::placeholder {
     color: #f00;
     margin-top: 10px;
 } 
+
+.container{
+    background: none!important;
+}

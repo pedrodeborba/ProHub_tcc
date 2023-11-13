@@ -1,8 +1,7 @@
 <section>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row" style="padding-top: 30px;">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
@@ -25,16 +24,33 @@
                     </button>
                 </div>
             </div>
-            <div class="col-lg-2"></div>
-        </div>
-        <div class="row" style="padding-top: 30px;">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8 text-center">
-              <a href="/list/patients" class="btn btn-lg">Pacientes</a> 
-              <a href="/list/schedules" class="btn btn-lg">Consultas</a> 
-              <a href="/list/admins" class="btn btn-lg">Profissionais</a> 
+            <div class="col-lg-2 d-flex justify-content-center" style="padding: 30px 15px;">
+              <div class="card text-center mb-3">
+                <div class="card-body">
+                  <h5 class="card-title text-white">Pacientes</h5>
+                  <p class="card-text text-white">Os profissionais podem criar, visualizar, editar ou excluir registros de pacientes.</p>
+                  <a href="/list/patients" class="btn btn-primary text-white">Acessar</a>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-2 d-flex justify-content-center" style="padding: 30px 15px;">
+              <div class="card text-center mb-3">
+                <div class="card-body">
+                  <h5 class="card-title text-white">Consultas</h5>
+                  <p class="card-text text-white">Opção para visualizar, remarcar ou marcar as consultas como concluídas.</p>
+                  <a href="/list/schedules" class="btn btn-primary text-white">Acessar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 d-flex justify-content-center" style="padding: 30px 15px;">
+              <div class="card text-center mb-3">
+                <div class="card-body">
+                  <h5 class="card-title text-white">Profissionais</h5>
+                  <p class="card-text text-white">Possibilidade do profissional criar, visualizar, editar ou excluir novos admins.</p>
+                  <a href="/list/admins" class="btn btn-primary text-white">Acessar</a>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
 </section>
