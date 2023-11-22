@@ -34,7 +34,7 @@ div input{
     height: 50px;
     border-radius: 10px;
     background-color: #6F7BF7;
-    border: none;
+    border: 1px solid #fff;
     color: #fff;
 }
 
